@@ -104,4 +104,4 @@ Write-Host "Next steps:" -ForegroundColor Yellow
 Write-Host "1. Review commits: git log --oneline" -ForegroundColor White
 Write-Host "2. Push to GitHub: git push origin main -f" -ForegroundColor White
 Write-Host ""
-Write-Host "Note: Use -f (force) if you're rewriting history" -ForegroundColor Red
+Write-Host "Note: Use -f (force) if you are rewriting history" -ForegroundColor Red
