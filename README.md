@@ -1,130 +1,195 @@
 
 
-Wattpad clone – whatapp
-=======================
+WebToon - Nền tảng đọc truyện trực tuyến
+=========================================
 
 Mục tiêu
 --------
-Tạo bản clone tối giản kiểu Wattpad để học fullstack. Tập trung vào CRUD truyện, chapter, đọc truyện, theo dõi tác giả, vote và comment. FE dùng React Router và React Bootstrap. BE dùng Node.js Express kết nối SQL Server. Ảnh lưu Cloudinary. DB chỉ giữ URL.
+WebToon là nền tảng đọc và chia sẻ truyện trực tuyến, được xây dựng với mục đích học tập fullstack development. Dự án tập trung vào CRUD truyện, quản lý chapters, đọc truyện, tương tác xã hội (follow, vote, comment), và quản lý reading lists. Frontend sử dụng React với React Router và Bootstrap, Backend dùng Node.js Express kết nối MySQL. Hình ảnh được lưu trữ trên Cloudinary.
 
-Tính năng MVP
--------------
-- Đăng ký và đăng nhập tài khoản qua MSSQL với mật khẩu được hash bằng bcrypt
-- Hồ sơ người dùng và theo dõi tác giả
-- Tạo truyện, mô tả, cover, gắn tag
-- Tạo chapter, sắp thứ tự, publish hoặc unpublish
-- Đọc truyện theo chapter, lưu vị trí đọc theo phần trăm
-- Vote chương và comment theo thread
-- Reading list ở chế độ công khai hoặc riêng tư
-- Tìm kiếm theo tiêu đề, mô tả, tag
+Tính năng chính
+---------------
+**Xác thực & Người dùng**
+- Đăng ký và đăng nhập với JWT authentication
+- Quản lý profile với avatar và background banner
+- Phân quyền: Admin, Author, Reader
+- Theo dõi tác giả yêu thích
 
-Kiến trúc và công nghệ
-----------------------
-Frontend
-- React
-- React Router
-- React Bootstrap
+**Quản lý truyện**
+- Tạo, chỉnh sửa, xóa truyện với cover image
+- Gắn tags và phân loại theo thể loại
+- Quản lý chapters với thứ tự tùy chỉnh
+- Publish/Unpublish chapters
+- Rich text editor cho nội dung
 
-Backend
-- Node.js và Express
-- mssql driver
-- cors, dotenv
-- bcryptjs để hash mật khẩu
-- jsonwebtoken để phát hành và kiểm tra JWT
-- multer để nhận file upload trước khi đẩy lên Cloudinary
+**Đọc truyện**
+- Giao diện đọc tối ưu, responsive
+- Lưu vị trí đọc tự động (Continue Reading)
+- Reading history và progress tracking
+- Reading lists (công khai/riêng tư)
 
-Database
-- SQL Server 2022
-- Toàn bộ dữ liệu văn bản dùng NVARCHAR để hỗ trợ Unicode
+**Tương tác xã hội**
+- Vote chapters yêu thích
+- Comment và reply theo thread
+- Review và đánh giá truyện (1-5 sao)
+- Follow stories để nhận thông báo
 
-Lưu trữ media
-- Cloudinary hay S3. Dự án mẫu dùng Cloudinary. DB chỉ lưu secure_url
+**Tìm kiếm & Khám phá**
+- Tìm kiếm theo tiêu đề, mô tả, tags
+- Lọc theo thể loại, độ dài, thời gian cập nhật
+- Browse genres với thumbnail grid
+- Latest stories và trending section
 
-Cấu trúc thư mục dự kiến
-------------------------
+Công nghệ sử dụng
+-----------------
+**Frontend**
+- React 19.2.0
+- React Router 7.9.4
+- React Bootstrap 2.10.10
+- Axios cho API calls
+- Tailwind CSS 4.1.14
+
+**Backend**
+- Node.js 18+ với Express 4.18
+- MySQL 8.0 (thay vì SQL Server)
+- JWT authentication (jsonwebtoken)
+- bcryptjs cho password hashing
+- multer cho file upload
+- Swagger UI cho API documentation
+
+**Database**
+- MySQL 8.0 với utf8mb4 encoding
+- Hỗ trợ đầy đủ Unicode (tiếng Việt)
+
+**Media Storage**
+- Cloudinary cho images (cover, avatar, banner)
+- Database chỉ lưu URL
+
+**DevOps**
+- Docker & Docker Compose
+- Hot-reload cho development
+- Seed data script (JavaScript)
+
+Cấu trúc dự án
+--------------
 ```
-whatapp
-  backend
-    src
-      app.js
-      db.js
-      mw
-        auth.js
-      routes
-        auth.js
-        stories.js
-        chapters.js
-        social.js
-        upload.js
-    .env.example
-    package.json
-  frontend
-    src
-      pages
-        Home.jsx
-        Login.jsx
-        Read.jsx
-        CreateStory.jsx
-      api.js
-      main.jsx
-    package.json
-  sql
-    01_schema.sql
-  README.md
-  docker-compose.yml
+webtoon/
+├── backend/
+│   ├── src/
+│   │   ├── modules/          # Feature modules
+│   │   │   ├── auth/
+│   │   │   ├── users/
+│   │   │   ├── stories/
+│   │   │   ├── chapters/
+│   │   │   ├── comments/
+│   │   │   ├── votes/
+│   │   │   ├── follows/
+│   │   │   ├── reviews/
+│   │   │   └── upload/
+│   │   ├── mw/              # Middleware
+│   │   ├── docs/            # Swagger docs
+│   │   ├── app.js
+│   │   └── db.js
+│   ├── database/
+│   │   ├── createdb.sql
+│   │   └── seed.js
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── layouts/
+│   │   ├── services/
+│   │   └── utils/
+│   └── package.json
+├── docker-compose.yml
+├── .env
+└── README.md
 ```
 
 Yêu cầu hệ thống
 ----------------
-- Node.js phiên bản LTS
-- Docker để chạy SQL Server cho môi trường dev
-- Tài khoản Cloudinary nếu dùng upload ảnh
+- Node.js 18+ (LTS)
+- Docker & Docker Compose
+- Tài khoản Cloudinary (optional, cho upload ảnh)
 
-Khởi chạy nhanh với Docker cho SQL Server
------------------------------------------
-```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrong!Passw0rd" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
-```
-
-Tạo database và schema
-----------------------
-- Mở Azure Data Studio hoặc sqlcmd
-- Chạy file sql/01_schema.sql
-
-Biến môi trường backend
------------------------
-Tạo file backend/.env dựa trên mẫu dưới đây
-```
-PORT=4000
-JWT_SECRET=supersecret
-SQL_SERVER=localhost
-SQL_USER=sa
-SQL_PASSWORD=YourStrong!Passw0rd
-SQL_DB=wattpad
-SQL_ENCRYPT=false
-
-CLOUDINARY_CLOUD_NAME=your_cloud
-CLOUDINARY_API_KEY=your_key
-CLOUDINARY_API_SECRET=your_secret
+Khởi chạy nhanh với Docker
+---------------------------
+**1. Clone repository và cấu hình**
+```bash
+git clone <repository-url>
+cd webtoon
 ```
 
-Cài đặt và chạy backend
------------------------
+**2. Chạy tất cả services với Docker Compose**
+```bash
+docker-compose up -d --build
 ```
+
+Services sẽ chạy tại:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:4000
+- API Documentation: http://localhost:4000/docs
+- MySQL: localhost:3307
+
+**3. Seed dữ liệu mẫu**
+```bash
+docker exec webtoon-backend node database/seed.js
+```
+
+**4. Tài khoản mẫu**
+- Admin: `admin@webtoon.com` / `password123`
+- Author: `kim@webtoon.com` / `password123`
+- Reader: `john@example.com` / `password123`
+
+Cấu hình môi trường
+-------------------
+File `.env` trong root directory:
+```env
+# Database
+DB_ROOT_PASSWORD=rootpassword123
+DB_NAME=wattpad
+DB_USER=sa
+DB_PASSWORD=123
+DB_PORT=3307
+
+# Backend
+NODE_ENV=development
+BACKEND_PORT=4000
+JWT_SECRET=your-secret-key-change-in-production
+
+# Frontend
+FRONTEND_PORT=3000
+REACT_APP_API_URL=http://localhost:4000
+
+# Cloudinary (Optional)
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+```
+
+Development không dùng Docker
+------------------------------
+**Backend:**
+```bash
 cd backend
-npm i
+npm install
 npm run dev
 ```
-API sẽ lắng nghe tại http://localhost:4000
 
-Cài đặt và chạy frontend
-------------------------
-```
+**Frontend:**
+```bash
 cd frontend
-npm i
-npm run dev
+npm install
+npm start
 ```
-Ứng dụng FE mặc định chạy Vite tại http://localhost:5173
+
+**MySQL:**
+Cần cài MySQL 8.0 local và chạy:
+```bash
+mysql -u root -p < backend/database/createdb.sql
+node backend/database/seed.js
+```
 
 Luồng xác thực
 --------------
@@ -183,15 +248,33 @@ Quy ước và bảo mật
 - JWT đặt thời gian sống hợp lý và lưu trên bộ nhớ FE. Không lưu trong localStorage nếu không cần
 - Với ảnh do người dùng tải lên cần kiểm tra loại tệp và kích thước ở tầng backend
 
-Lộ trình mở rộng sau MVP
-------------------------
-- Reading list API và giao diện quản lý list
-- Trang Story Detail với danh sách chapter và nút Publish cho tác giả
-- Bộ lọc theo tag và phân trang phía server
-- Redis cache cho trang Trending và danh sách
-- Full text search trên SQL Server hoặc Meilisearch
-- Thông báo realtime cho vote và comment qua WebSocket
+Tính năng nâng cao (Roadmap)
+-----------------------------
+- [ ] Admin dashboard
+- [ ] Notification system (realtime)
+- [ ] Advanced analytics cho authors
+- [ ] Reading statistics và insights
+- [ ] Social sharing
+- [ ] Mobile app (React Native)
+- [ ] Redis caching cho performance
+- [ ] Elasticsearch cho full-text search
+- [ ] WebSocket cho realtime comments
+- [ ] Email notifications
+- [ ] Multi-language support
+
+Deploy miễn phí
+---------------
+**Frontend:** Vercel, Netlify, Cloudflare Pages
+**Backend:** Render, Railway, Fly.io
+**Database:** Railway MySQL, Aiven
+**Media:** Cloudinary (25GB free)
+
+Xem chi tiết hướng dẫn deploy trong file `DEPLOYMENT.md`
+
+Đóng góp
+--------
+Dự án này được tạo ra cho mục đích học tập. Mọi đóng góp đều được chào đón!
 
 Giấy phép
 ---------
-Dùng cho mục đích học tập
+MIT License - Dùng cho mục đích học tập và phi thương mại
