@@ -1,0 +1,332 @@
+/* Wattpad-style Header */
+.header-wattpad {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 0;
+}
+
+.header-wattpad .navbar-brand {
+  padding: 0;
+}
+
+.header-wattpad .navbar-brand img {
+  height: 28px;
+  width: auto;
+}
+
+/* Dropdown Styling */
+.header-dropdown .nav-link,
+.user-dropdown .nav-link {
+  color: #333;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+}
+
+.header-dropdown .nav-link:hover,
+.user-dropdown .nav-link:hover {
+  color: #f26500;
+}
+
+.header-dropdown .dropdown-toggle::after {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Search Form */
+.search-form {
+  max-width: 350px;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #f26500;
+  box-shadow: 0 0 0 2px rgba(242, 101, 0, 0.1);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+/* Write Button */
+.write-btn {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease;
+}
+
+.write-btn:hover {
+  color: #f26500;
+}
+
+.write-btn i {
+  font-size: 16px;
+}
+
+/* Login Button */
+.login-btn {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+  color: #f26500;
+}
+
+/* User Avatar Wrapper */
+.user-avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* User Avatar */
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e6e6e6;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  display: block;
+}
+
+.user-avatar:hover {
+  border-color: #f26500;
+}
+
+/* Notification Badge */
+.notification-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide badge when no notifications (you can toggle this with JavaScript) */
+.notification-badge.hidden {
+  display: none;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  min-width: 200px;
+}
+
+.dropdown-item {
+  padding: 0.75rem 1.5rem;
+  color: #333;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item i {
+  font-size: 16px;
+  width: 20px;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f8f8;
+  color: #f26500;
+}
+
+.dropdown-item:active {
+  background-color: #f26500;
+  color: white;
+}
+
+.dropdown-divider {
+  margin: 0.5rem 0;
+  border-color: #e6e6e6;
+}
+
+/* User Dropdown Specific */
+.user-dropdown .dropdown-toggle {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.user-dropdown .dropdown-toggle::after {
+  display: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+  .search-form {
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+
+  .header-wattpad .navbar-nav {
+    padding: 1rem 0;
+  }
+
+  .header-wattpad .nav-link {
+    padding: 0.75rem 0;
+  }
+
+  .user-avatar {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Remove default Bootstrap button styles */
+.header-wattpad .btn-link {
+  text-decoration: none;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.header-wattpad .btn-link:focus {
+  box-shadow: none;
+}
+
+/* Search Suggestions */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f8f8f8;
+}
+
+.suggestion-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.suggestion-cover {
+  width: 40px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.suggestion-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.suggestion-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suggestion-author {
+  font-size: 12px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Scrollbar styling for suggestions */
+.search-suggestions::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-suggestions::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 0 8px 8px 0;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Loading and Empty States */
+.suggestion-loading,
+.suggestion-empty {
+  padding: 20px 16px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.suggestion-empty i {
+  font-size: 20px;
+  color: #999;
+}
