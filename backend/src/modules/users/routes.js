@@ -15,7 +15,7 @@ router.get('/search', async (req, res, next) => {
     
     const searchTerm = `%${q}%`;
     const [users] = await pool.query(
-      `SELECT id, username, bio, avatar_url, created_at 
+      `SELECT id, username, bio, avatar_url, background_url, created_at 
        FROM users 
        WHERE username LIKE ? 
        ORDER BY username ASC
@@ -33,7 +33,7 @@ router.get('/search', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const [users] = await pool.query(
-      'SELECT id, username, email, bio, avatar_url, created_at FROM users WHERE id = ?',
+      'SELECT id, username, email, bio, avatar_url, background_url, created_at FROM users WHERE id = ?',
       [req.params.id]
     );
     
@@ -52,7 +52,7 @@ router.get('/:id', async (req, res, next) => {
 // PUT /me - Update own profile
 router.put('/me', auth, async (req, res, next) => {
   try {
-    const { username, bio, avatar_url } = req.body;
+    const { username, bio, avatar_url, background_url } = req.body;
     
     const updates = [];
     const values = [];
@@ -69,6 +69,10 @@ router.put('/me', auth, async (req, res, next) => {
       updates.push('avatar_url = ?');
       values.push(avatar_url);
     }
+    if (background_url !== undefined) {
+      updates.push('background_url = ?');
+      values.push(background_url);
+    }
     
     if (updates.length === 0) {
       return res.status(400).json({ ok: false, message: 'No fields to update', errorCode: 'NO_UPDATES' });
@@ -82,7 +86,7 @@ router.put('/me', auth, async (req, res, next) => {
     );
 
     const [users] = await pool.query(
-      'SELECT id, username, email, bio, avatar_url FROM users WHERE id = ?',
+      'SELECT id, username, email, bio, avatar_url, background_url FROM users WHERE id = ?',
       [req.user.id]
     );
 

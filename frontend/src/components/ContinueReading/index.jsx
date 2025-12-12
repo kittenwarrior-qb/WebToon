@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Badge, Spinner, Alert } from 'react-bootstra
 import { getReadingHistory } from '../../services/api';
 import { useNavigate } from 'react-router';
 import './ContinueReading.css';
+import bookCoverPlaceholder from '../../assests/images/book-cover-placeholder.png';
 
 const ContinueReading = () => {
     const [readingHistory, setReadingHistory] = useState([]);
@@ -102,13 +103,13 @@ const ContinueReading = () => {
                             >
                                 <div className="card-image-wrapper">
                                     <img
-                                        src={item.story_cover_url || '/assests/icons/default-cover.png'}
+                                        src={item.story_cover_url || bookCoverPlaceholder}
                                         alt={item.story_title}
                                         className="card-img-top"
                                         style={{ height: '200px', objectFit: 'cover' }}
                                         onError={(e) => {
                                             e.target.onerror = null;
-                                            e.target.src = '/assests/icons/default-cover.png';
+                                            e.target.src = bookCoverPlaceholder;
                                         }}
                                     />
                                     <div className="reading-overlay">

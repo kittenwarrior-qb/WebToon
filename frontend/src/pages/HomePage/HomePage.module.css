@@ -44,15 +44,15 @@
 
 .sectionTitleLink:hover,
 .sectionTitleLink:visited:hover {
-    color: #ff4f00;
+    color: #36A189;
 }
 
 .sectionTitleLink:visited {
-    color: #ff4f00;
+    color: #36A189;
 }
 
 .sectionTitleLink:hover .sectionTitle {
-    color: #ff4f00;
+    color: #36A189;
 }
 
 .sectionTitle {
@@ -64,7 +64,7 @@
 }
 
 .sectionTitleLink:visited .sectionTitle {
-    color: #ff4f00;
+    color: #36A189;
 }
 
 .viewAllLink {
@@ -83,7 +83,7 @@
 
 /* Show "View all" only when title link is visited */
 .sectionTitleLink:visited ~ .viewAllLink {
-    color: #ff4f00;
+    color: #36A189;
     opacity: 1;
     visibility: visible;
     max-width: 100px;
@@ -102,7 +102,7 @@
 }
 
 .viewAllLink:hover {
-    color: #ff4f00;
+    color: #36A189;
     text-decoration: underline;
 }
 
@@ -210,7 +210,7 @@
 }
 
 .genreCard:hover .genreTag {
-    color: #ff4f00;
+    color: #36A189;
 }
 
 /* Genre thumbnail grid layout */

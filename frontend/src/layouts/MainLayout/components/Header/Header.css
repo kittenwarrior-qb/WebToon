@@ -14,6 +14,19 @@
   width: auto;
 }
 
+/* WebToon Logo Text */
+.webtoon-logo .logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #36A189;
+  letter-spacing: -0.5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.webtoon-logo:hover .logo-text {
+  color: #2d8a73;
+}
+
 /* Dropdown Styling */
 .header-dropdown .nav-link,
 .user-dropdown .nav-link {
@@ -24,7 +37,7 @@
 
 .header-dropdown .nav-link:hover,
 .user-dropdown .nav-link:hover {
-  color: #f26500;
+  color: #36A189;
 }
 
 .header-dropdown .dropdown-toggle::after {
@@ -65,8 +78,8 @@
 }
 
 .search-input:focus {
-  border-color: #f26500;
-  box-shadow: 0 0 0 2px rgba(242, 101, 0, 0.1);
+  border-color: #36A189;
+  box-shadow: 0 0 0 2px rgba(54, 161, 137, 0.1);
   outline: none;
 }
 
@@ -84,7 +97,7 @@
 }
 
 .write-btn:hover {
-  color: #f26500;
+  color: #36A189;
 }
 
 .write-btn i {
@@ -101,7 +114,7 @@
 }
 
 .login-btn:hover {
-  color: #f26500;
+  color: #36A189;
 }
 
 /* User Avatar Wrapper */
@@ -124,7 +137,7 @@
 }
 
 .user-avatar:hover {
-  border-color: #f26500;
+  border-color: #36A189;
 }
 
 /* Notification Badge */
@@ -171,11 +184,11 @@
 
 .dropdown-item:hover {
   background-color: #f8f8f8;
-  color: #f26500;
+  color: #36A189;
 }
 
 .dropdown-item:active {
-  background-color: #f26500;
+  background-color: #36A189;
   color: white;
 }
 

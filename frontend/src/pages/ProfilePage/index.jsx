@@ -12,6 +12,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import bookCoverPlaceholder from '../../assests/images/book-cover-placeholder.png';
 
 const API_BASE_URL = 'http://localhost:4000';
 
@@ -767,13 +768,13 @@ export default function ProfilePage() {
                           >
                             <div className="card-body d-flex gap-3">
                               <img 
-                                src={story.cover_image || story.cover_url || '/assests/icons/default-cover.png'} 
+                                src={story.cover_image || story.cover_url || "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover"} 
                                 alt={story.title}
                                 className="rounded object-fit-cover"
                                 style={{width: '80px', height: '120px'}}
                                 onError={(e) => {
                                   e.target.onerror = null;
-                                  e.target.src = '/assests/icons/default-cover.png';
+                                  e.target.src = "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover";
                                 }}
                               />
                               <div className="flex-grow-1">
@@ -867,34 +868,34 @@ export default function ProfilePage() {
                             // Show first thumbnail + 2 smaller thumbnails on the side
                             <>
                               <img 
-                                src={thumbnails[0].cover_url || '/assests/icons/default-cover.png'} 
+                                src={thumbnails[0].cover_url || "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover"} 
                                 alt="Story 1"
                                 className="rounded object-fit-cover"
                                 style={{width: '60px', height: '90px'}}
                                 onError={(e) => {
                                   e.target.onerror = null;
-                                  e.target.src = '/assests/icons/default-cover.png';
+                                  e.target.src = "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover";
                                 }}
                               />
                               <div className="d-flex flex-column gap-1">
                                 <img 
-                                  src={thumbnails[1].cover_url || '/assests/icons/default-cover.png'} 
+                                  src={thumbnails[1].cover_url || "https://via.placeholder.com/200x300/e0e0e0/666666?text=No+Cover"} 
                                   alt="Story 2"
                                   className="rounded object-fit-cover"
                                   style={{width: '30px', height: '43px'}}
                                   onError={(e) => {
                                     e.target.onerror = null;
-                                    e.target.src = '/assests/icons/default-cover.png';
+                                    e.target.src = "https://via.placeholder.com/200x300/e0e0e0/666666?text=No+Cover";
                                   }}
                                 />
                                 <img 
-                                  src={thumbnails[2].cover_url || '/assests/icons/default-cover.png'} 
+                                  src={thumbnails[2].cover_url || "https://via.placeholder.com/200x300/e0e0e0/666666?text=No+Cover"} 
                                   alt="Story 3"
                                   className="rounded object-fit-cover"
                                   style={{width: '30px', height: '43px'}}
                                   onError={(e) => {
                                     e.target.onerror = null;
-                                    e.target.src = '/assests/icons/default-cover.png';
+                                    e.target.src = "https://via.placeholder.com/200x300/e0e0e0/666666?text=No+Cover";
                                   }}
                                 />
                               </div>
@@ -902,13 +903,13 @@ export default function ProfilePage() {
                           ) : thumbnails.length > 0 ? (
                             // Show only the first story's thumbnail
                             <img 
-                              src={thumbnails[0].cover_url || '/assests/icons/default-cover.png'} 
+                              src={thumbnails[0].cover_url || "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover"} 
                               alt="Story"
                               className="rounded object-fit-cover"
                               style={{width: '60px', height: '90px'}}
                               onError={(e) => {
                                 e.target.onerror = null;
-                                e.target.src = '/assests/icons/default-cover.png';
+                                e.target.src = "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover";
                               }}
                             />
                           ) : (
@@ -996,13 +997,13 @@ export default function ProfilePage() {
                           <div className="card-body d-flex gap-3">
                             <Link to={`/story/${story.id}`}>
                               <img 
-                                src={story.cover_url || '/assests/icons/default-cover.png'} 
+                                src={story.cover_url || "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover"} 
                                 alt={story.title}
                                 className="rounded object-fit-cover"
                                 style={{width: '80px', height: '120px'}}
                                 onError={(e) => {
                                   e.target.onerror = null;
-                                  e.target.src = '/assests/icons/default-cover.png';
+                                  e.target.src = "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover";
                                 }}
                               />
                             </Link>
@@ -1224,13 +1225,13 @@ export default function ProfilePage() {
                               <div className="card border-0 shadow-sm">
                                 <div className="card-body d-flex gap-3">
                                   <img 
-                                    src={story.cover_url || '/assests/icons/default-cover.png'} 
+                                    src={story.cover_url || "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover"} 
                                     alt={story.title}
                                     className="rounded object-fit-cover"
                                     style={{width: '80px', height: '120px'}}
                                     onError={(e) => {
                                       e.target.onerror = null;
-                                      e.target.src = '/assests/icons/default-cover.png';
+                                      e.target.src = "https://via.placeholder.com/400x600/e0e0e0/666666?text=No+Cover";
                                     }}
                                   />
                                   <div className="flex-grow-1">

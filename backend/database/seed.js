@@ -37,15 +37,15 @@ async function seed() {
   
   // Insert Users
   await conn.query(`
-    INSERT INTO users (username, email, password_hash, bio, avatar_url) VALUES
-    ('admin', 'admin@webtoon.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'Administrator account', 'https://i.pravatar.cc/150?img=1'),
-    ('author_kim', 'kim@webtoon.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'Tác giả truyện tranh chuyên nghiệp', 'https://i.pravatar.cc/150?img=2'),
-    ('author_lee', 'lee@webtoon.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'Yêu thích viết truyện fantasy', 'https://i.pravatar.cc/150?img=3'),
-    ('author_park', 'park@webtoon.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'Chuyên viết romance và drama', 'https://i.pravatar.cc/150?img=4'),
-    ('reader_john', 'john@example.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'Đọc giả cuồng nhiệt', 'https://i.pravatar.cc/150?img=5'),
-    ('reader_jane', 'jane@example.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'Thích đọc truyện hành động', 'https://i.pravatar.cc/150?img=6'),
-    ('reader_mike', 'mike@example.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'Fan của truyện kinh dị', 'https://i.pravatar.cc/150?img=7'),
-    ('reader_sarah', 'sarah@example.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'Yêu thích romance', 'https://i.pravatar.cc/150?img=8')
+    INSERT INTO users (username, email, password_hash, role, bio, avatar_url) VALUES
+    ('admin', 'admin@webtoon.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'admin', 'Administrator account', 'https://i.pravatar.cc/150?img=1'),
+    ('author_kim', 'kim@webtoon.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'author', 'Tác giả truyện tranh chuyên nghiệp', 'https://i.pravatar.cc/150?img=2'),
+    ('author_lee', 'lee@webtoon.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'author', 'Yêu thích viết truyện fantasy', 'https://i.pravatar.cc/150?img=3'),
+    ('author_park', 'park@webtoon.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'author', 'Chuyên viết romance và drama', 'https://i.pravatar.cc/150?img=4'),
+    ('reader_john', 'john@example.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'reader', 'Đọc giả cuồng nhiệt', 'https://i.pravatar.cc/150?img=5'),
+    ('reader_jane', 'jane@example.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'reader', 'Thích đọc truyện hành động', 'https://i.pravatar.cc/150?img=6'),
+    ('reader_mike', 'mike@example.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'reader', 'Fan của truyện kinh dị', 'https://i.pravatar.cc/150?img=7'),
+    ('reader_sarah', 'sarah@example.com', '$2a$10$rZ5qH8qF5qH8qF5qH8qF5.N5qH8qF5qH8qF5qH8qF5qH8qF5qH8qF', 'reader', 'Yêu thích romance', 'https://i.pravatar.cc/150?img=8')
   `);
 
   console.log('Inserted users');

@@ -14,6 +14,7 @@ import { getStories, getTags, getReadingHistory } from "../../services/api";
 import styles from "./HomePage.module.css";
 import GenreSection from "../../components/GenreSection";
 import ContinueReading from "../../components/ContinueReading";
+import bookCoverPlaceholder from "../../assests/images/book-cover-placeholder.png";
 
 const HomePage = () => {
   const [stories, setStories] = useState([]);
@@ -259,55 +260,6 @@ const HomePage = () => {
             <ContinueReading stories={continueReading} />
           )}
 
-          {/* Carousel Section */}
-          <div className={styles.carouselSection}>
-            <Container>
-              <Carousel className={styles.mainCarousel}>
-                <Carousel.Item>
-                  <div className={styles.carouselPlaceholder}>
-                    <div className={styles.carouselContent}>
-                      <Badge bg="primary" className={styles.carouselBadge}>
-                        Featured
-                      </Badge>
-                      <h2>Discover Amazing Stories</h2>
-                      <p>Your next favorite story is waiting for you</p>
-                      <Button variant="light" size="lg">
-                        Explore Now
-                      </Button>
-                    </div>
-                  </div>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <div className={styles.carouselPlaceholder}>
-                    <div className={styles.carouselContent}>
-                      <Badge bg="success" className={styles.carouselBadge}>
-                        Trending
-                      </Badge>
-                      <h2>Popular This Week</h2>
-                      <p>See what everyone is reading</p>
-                      <Button variant="light" size="lg">
-                        View Trending
-                      </Button>
-                    </div>
-                  </div>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <div className={styles.carouselPlaceholder}>
-                    <div className={styles.carouselContent}>
-                      <Badge bg="warning" className={styles.carouselBadge}>
-                        New
-                      </Badge>
-                      <h2>Fresh Stories Daily</h2>
-                      <p>New stories added every day</p>
-                      <Button variant="light" size="lg">
-                        Browse New
-                      </Button>
-                    </div>
-                  </div>
-                </Carousel.Item>
-              </Carousel>
-            </Container>
-          </div>
           {/* Genres Row */}
           <div className={styles.genresRow}>
             <Container>
@@ -362,10 +314,11 @@ const HomePage = () => {
                           {genre.stories[0] && (
                             <div className={styles.largeThumbnail}>
                               <img
-                                src={genre.stories[0].cover_url || "/assests/icons/default-cover.png"}
+                                src={genre.stories[0].cover_url || bookCoverPlaceholder}
                                 alt={genre.stories[0].title}
                                 onError={(e) => {
-                                  e.target.src = "/assests/icons/default-cover.png";
+                                  e.target.onerror = null;
+                                  e.target.src = bookCoverPlaceholder;
                                 }}
                               />
                             </div>
@@ -376,10 +329,11 @@ const HomePage = () => {
                               {genre.stories.slice(1, 5).map((story, idx) => (
                                 <div key={idx} className={styles.smallThumbnail}>
                                   <img
-                                    src={story.cover_url || "/assests/icons/default-cover.png"}
+                                    src={story.cover_url || bookCoverPlaceholder}
                                     alt={story.title}
                                     onError={(e) => {
-                                      e.target.src = "/assests/icons/default-cover.png";
+                                      e.target.onerror = null;
+                                      e.target.src = bookCoverPlaceholder;
                                     }}
                                   />
                                 </div>

@@ -19,6 +19,7 @@ import {
   checkIfFollowingStory,
   getCommentsByStoryId,
 } from "../../services/api";
+import bookCoverPlaceholder from "../../assests/images/book-cover-placeholder.png";
 
 const StoryDetailPage = () => {
   const { id } = useParams();
@@ -291,7 +292,7 @@ const StoryDetailPage = () => {
               <div className="d-flex">
                 <div className="me-4">
                   <img
-                    src={story.cover_url || "/book-placeholder.png"}
+                    src={story.cover_url || bookCoverPlaceholder}
                     alt={story.title}
                     style={{
                       width: "150px",
@@ -299,6 +300,10 @@ const StoryDetailPage = () => {
                       objectFit: "cover",
                     }}
                     className="rounded"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = bookCoverPlaceholder;
+                    }}
                   />
                 </div>
                 <div className="flex-grow-1">

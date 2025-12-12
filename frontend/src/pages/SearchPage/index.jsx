@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Spinner, Badge, Pagination } from "react-boo
 import { useSearchParams, Link } from "react-router"
 import { getStories, getTags, searchUsers } from "../../services/api"
 import styles from "./SearchPage.module.css"
+import bookCoverPlaceholder from "../../assests/images/book-cover-placeholder.png"
 
 const SearchPage = () => {
     const [searchParams] = useSearchParams()
@@ -537,13 +538,15 @@ const SearchPage = () => {
                                         .map((story) => (
                                     <div key={story.id} className={styles.storyItem}>
                                         <Link to={`/story/${story.id}`} className={styles.storyLink}>
-                                            {story.cover_url && (
-                                                <img 
-                                                    src={story.cover_url} 
-                                                    alt={story.title}
-                                                    className={styles.storyCover}
-                                                />
-                                            )}
+                                            <img 
+                                                src={story.cover_url || bookCoverPlaceholder} 
+                                                alt={story.title}
+                                                className={styles.storyCover}
+                                                onError={(e) => {
+                                                    e.target.onerror = null;
+                                                    e.target.src = bookCoverPlaceholder;
+                                                }}
+                                            />
                                         </Link>
                                         <div className={styles.storyDetails}>
                                             <Link to={`/story/${story.id}`} className={styles.storyTitleLink}>

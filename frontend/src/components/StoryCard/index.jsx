@@ -23,8 +23,12 @@ const StoryCard = ({ story, showProgress = false, progress = 0, isSingleInSectio
             <div className="story-cover">
                 <Card.Img 
                     variant="top" 
-                    src={coverUrl} 
+                    src={coverUrl || bookCoverPlaceholder} 
                     alt={story.title}
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = bookCoverPlaceholder;
+                    }}
                 />
                 {showProgress && (
                     <div className="progress-overlay">

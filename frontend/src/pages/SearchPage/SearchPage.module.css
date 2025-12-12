@@ -33,9 +33,9 @@
     width: 100%;
     padding: 0.5rem 1rem;
     background-color: #fff;
-    border: 1px solid #f26500;
+    border: 1px solid #36A189;
     border-radius: 6px;
-    color: #f26500;
+    color: #36A189;
     font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
@@ -48,7 +48,7 @@
 }
 
 .clearFiltersBtn:hover {
-    background-color: #f26500;
+    background-color: #36A189;
     color: white;
 }
 
@@ -68,7 +68,7 @@
 .activeFiltersTitle {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #f26500;
+    color: #36A189;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
 }
@@ -84,7 +84,7 @@
     align-items: center;
     gap: 0.25rem;
     padding: 0.25rem 0.5rem;
-    background-color: #f26500;
+    background-color: #36A189;
     color: white;
     border-radius: 15px;
     font-size: 0.75rem;
@@ -136,12 +136,12 @@
 }
 
 .tab:hover {
-    color: #f26500;
+    color: #36A189;
 }
 
 .tab.active {
-    color: #f26500;
-    border-bottom-color: #f26500;
+    color: #36A189;
+    border-bottom-color: #36A189;
 }
 
 /* Filter Groups */
@@ -185,8 +185,8 @@
 }
 
 .filterCheckbox input[type="checkbox"]:checked {
-  background-color: #f26500;
-  border-color: #f26500;
+  background-color: #36A189;
+  border-color: #36A189;
 }
 
 /* Tag Cloud */
@@ -215,14 +215,14 @@
 }
 
 .tagButtonActive {
-  background-color: #f26500;
-  border-color: #f26500;
+  background-color: #36A189;
+  border-color: #36A189;
   color: white;
 }
 
 .tagButtonActive:hover {
-  background-color: #d95a00;
-  border-color: #d95a00;
+  background-color: #2d8a73;
+  border-color: #2d8a73;
 }
 
 /* Tag Search Form */
@@ -250,9 +250,9 @@
 }
 
 .tagSearchInput:focus {
-  border-color: #f26500;
+  border-color: #36A189;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(242, 101, 0, 0.1);
+  box-shadow: 0 0 0 2px rgba(54, 161, 137, 0.1);
 }
 
 /* Autocomplete Suggestions Dropdown */
@@ -304,13 +304,13 @@
 }
 
 .suggestionItem i {
-  color: #f26500;
+  color: #36A189;
   font-size: 0.875rem;
 }
 
 .suggestionItem:hover {
-  background-color: #fff5f0;
-  color: #f26500;
+  background-color: #f0f8f6;
+  color: #36A189;
 }
 
 .suggestionItem:hover i {
@@ -323,7 +323,7 @@
 
 .tagSearchButton {
   padding: 0.5rem 0.75rem;
-  background-color: #f26500;
+  background-color: #36A189;
   border: none;
   border-radius: 4px;
   color: white;
@@ -336,7 +336,7 @@
 }
 
 .tagSearchButton:hover:not(:disabled) {
-  background-color: #d95a00;
+  background-color: #2d8a73;
 }
 
 .tagSearchButton:disabled {
@@ -408,7 +408,7 @@
 }
 
 .storyTitleLink:hover {
-    color: #f26500;
+    color: #36A189;
 }
 
 .storyTitle {
@@ -469,7 +469,7 @@
 }
 
 .storyAuthor a {
-    color: #f26500;
+    color: #36A189;
     text-decoration: none;
     font-weight: 600;
 }
@@ -605,7 +605,7 @@
 }
 
 .userNameLink:hover .userName {
-    color: #f26500;
+    color: #36A189;
 }
 
 .userName {

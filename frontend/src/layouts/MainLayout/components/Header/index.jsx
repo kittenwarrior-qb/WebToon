@@ -155,13 +155,8 @@ function Header() {
     <Navbar bg="white" expand="lg" className="header-wattpad border-bottom">
       <Container fluid className="px-4">
         {/* Logo */}
-        <Navbar.Brand as={Link} to="/" className="me-4">
-          <img
-            src="/Hompage/main_logo.svg"
-            alt="Whatpad"
-            height="28"
-            className="d-inline-block align-top"
-          />
+        <Navbar.Brand as={Link} to="/" className="me-4 webtoon-logo">
+          <span className="logo-text">WEBTOON</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="navbar-content" />
@@ -272,14 +267,14 @@ function Header() {
                           user.avatar_url ||
                           `https://ui-avatars.com/api/?name=${encodeURIComponent(
                             user.username
-                          )}&background=f26500&color=fff&bold=true`
+                          )}&background=36A189&color=fff&bold=true`
                         }
                         alt={user.username}
                         className="user-avatar"
                         onError={(e) => {
                           e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
                             user.username
-                          )}&background=f26500&color=fff&bold=true`;
+                          )}&background=36A189&color=fff&bold=true`;
                         }}
                       />
                       <span className="notification-badge"></span>

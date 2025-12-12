@@ -88,7 +88,7 @@ router.post('/register', async (req, res, next) => {
       [cleanUsername, cleanEmail, password_hash]
     );
 
-    const [users] = await pool.query('SELECT id, username, email, bio, avatar_url, created_at FROM users WHERE id = ?', [result.insertId]);
+    const [users] = await pool.query('SELECT id, username, email, bio, avatar_url, background_url, created_at FROM users WHERE id = ?', [result.insertId]);
     const user = users[0];
 
     res.status(201).json({
@@ -178,7 +178,7 @@ router.post('/login', async (req, res, next) => {
 router.get('/me', auth, async (req, res, next) => {
   try {
     const [users] = await pool.query(
-      'SELECT id, username, email, bio, avatar_url, created_at FROM users WHERE id = ?',
+      'SELECT id, username, email, bio, avatar_url, background_url, created_at FROM users WHERE id = ?',
       [req.user.id]
     );
 
