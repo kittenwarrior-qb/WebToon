@@ -29,19 +29,28 @@ app.use(cors());
 app.use(express.json({ charset: 'utf-8' }));
 app.use(express.urlencoded({ extended: true, charset: 'utf-8' }));
 
-// Set default charset for responses
-app.use((req, res, next) => {
-    res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    next();
-});
-
 // Health check
 app.get('/health', (req, res) => {
   res.json({ ok: true });
 });
 
 // API Documentation
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(openapiSpec));
+const swaggerOptions = {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: 'WebToon API Docs'
+};
+app.use('/docs', swaggerUi.serve);
+app.get('/docs', swaggerUi.setup(openapiSpec, swaggerOptions));
+
+// Set default charset for JSON responses (after swagger)
+app.use((req, res, next) => {
+    const originalJson = res.json;
+    res.json = function(data) {
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        return originalJson.call(this, data);
+    };
+    next();
+});
 
 // Mount routes
 app.use('/auth', authRoutes);

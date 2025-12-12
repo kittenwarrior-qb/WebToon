@@ -4,7 +4,7 @@ services:
   # MySQL Database
   mysql:
     image: mysql:8.0
-    container_name: whatpad-mysql
+    container_name: webtoon-mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-123}
@@ -12,13 +12,13 @@ services:
       MYSQL_USER: ${DB_USER:-sa}
       MYSQL_PASSWORD: ${DB_PASSWORD:-123}
     ports:
-      - "${DB_PORT:-1710}:3306"
+      - "${DB_PORT:-3307}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./backend/database/createdb.sql:/docker-entrypoint-initdb.d/01-createdb.sql
       - ./backend/migrations:/docker-entrypoint-initdb.d/migrations
     networks:
-      - whatpad-network
+      - webtoon-network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-123}"]
       interval: 10s
@@ -30,11 +30,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: whatpad-backend
+    container_name: webtoon-backend
     restart: unless-stopped
     environment:
       NODE_ENV: ${NODE_ENV:-development}
-      PORT: ${BACKEND_PORT:-1204}
+      PORT: ${BACKEND_PORT:-4000}
       DB_HOST: mysql
       DB_USER: ${DB_USER:-sa}
       DB_PASSWORD: ${DB_PASSWORD:-123}
@@ -45,7 +45,7 @@ services:
       CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
       CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
     ports:
-      - "4000:1204"
+      - "4000:4000"
     depends_on:
       mysql:
         condition: service_healthy
@@ -53,7 +53,7 @@ services:
       - ./backend:/app
       - /app/node_modules
     networks:
-      - whatpad-network
+      - webtoon-network
     command: npm run dev
 
   # Frontend React App
@@ -63,7 +63,7 @@ services:
       dockerfile: Dockerfile
       args:
         - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:4000}
-    container_name: whatpad-frontend
+    container_name: webtoon-frontend
     restart: unless-stopped
     environment:
       REACT_APP_API_URL: ${REACT_APP_API_URL:-http://localhost:4000}
@@ -75,7 +75,7 @@ services:
       - ./frontend:/app
       - /app/node_modules
     networks:
-      - whatpad-network
+      - webtoon-network
     command: npm start
 
 volumes:
@@ -83,5 +83,5 @@ volumes:
     driver: local
 
 networks:
-  whatpad-network:
+  webtoon-network:
     driver: bridge
