@@ -133,7 +133,3 @@ Chapters
 Đóng góp
 --------
 Dự án này được tạo ra cho mục đích học tập. Mọi đóng góp đều được chào đón!
-
-Giấy phép
----------
-MIT License - Dùng cho mục đích học tập và phi thương mại
